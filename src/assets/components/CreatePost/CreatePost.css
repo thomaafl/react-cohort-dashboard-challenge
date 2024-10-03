@@ -35,5 +35,11 @@
     border-radius: 4px;
     padding-inline: 55px;
     position: relative;
+    transition: background-color 0.3s, transform 0.3s;
 
 }
+
+.create-post-button:hover {
+    background-color: #64dc78;
+}
+

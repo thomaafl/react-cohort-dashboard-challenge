@@ -6,6 +6,7 @@ import Header from "./assets/components/Header/Header"
 import LeftMenu from './assets/components/LeftMenu/LeftMenu'
 import CreatePost from './assets/components/CreatePost/CreatePost'
 import Post from './assets/components/Feed/Post'
+import Home from './assets/components/Feed/Home'
 function App() {
   
 
@@ -17,11 +18,8 @@ function App() {
           <LeftMenu />
 
           <div className="feed-container">
-            <CreatePost />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
+            <Home />
+            
 
 
           </div>
