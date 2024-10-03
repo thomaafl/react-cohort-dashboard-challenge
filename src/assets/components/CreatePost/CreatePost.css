@@ -1,0 +1,39 @@
+
+
+
+.create-post {
+    background-color: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding around the content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    margin-bottom: 20px; /* Space below the create post section */
+    width: calc(100% - 40px); /* Full width minus some padding/margin */
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.profile-logo-create-post {
+    position: relative;
+    margin-right: 10px;
+}
+
+.post-input {
+    position: relative;
+    width: 80%;
+    resize: none;
+    background-color: #e6ebf5;
+    border-radius: 4px;
+    margin-right: 15px;
+    
+}
+
+.create-post-button {
+    background-color: #000046;
+    color: white;
+    
+    border-radius: 4px;
+    padding-inline: 55px;
+    position: relative;
+
+}
