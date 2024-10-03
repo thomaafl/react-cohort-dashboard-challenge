@@ -7,6 +7,8 @@ import LeftMenu from './assets/components/LeftMenu/LeftMenu'
 import CreatePost from './assets/components/CreatePost/CreatePost'
 import Post from './assets/components/Feed/Post'
 import Home from './assets/components/Feed/Home'
+import Profile from './assets/components/Profile/Profile'
+import { Routes, Route } from 'react-router-dom'
 function App() {
   
 
@@ -18,8 +20,11 @@ function App() {
           <LeftMenu />
 
           <div className="feed-container">
-            <Home />
-            
+           
+            <Routes>
+              <Route path ="/" element = {<Home />}/>
+              <Route path ="/profile" element = {<Profile />}/>
+            </Routes>
 
 
           </div>

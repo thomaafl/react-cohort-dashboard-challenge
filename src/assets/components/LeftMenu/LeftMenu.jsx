@@ -1,6 +1,8 @@
 import HomeLogo from "./HomeLogo";
 import ProfileLogo from "./ProfileLogo";
 import "../LeftMenu/LeftMenu.css"
+import { Link, useNavigate, useParams } from "react-router-dom";
+
 
 export default function LeftMenu() {
 
@@ -10,13 +12,13 @@ export default function LeftMenu() {
             <nav className="left-menu">
 
                 
-                <button className="home-logo">
+                <Link to="/" className="home-logo">
                     <HomeLogo />
-                </button>
+                </Link>
 
-                <button className="profile-logo">
+                <Link to="/profile" className="profile-logo">
                     <ProfileLogo />
-                </button>
+                </Link>
 
             </nav>
         </>
