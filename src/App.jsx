@@ -19,6 +19,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [loggedInUser, setLoggedInUser] = useState("")
   const username = "thomaafl"
+
   const fetchPosts = async () => {
     try {
       const result = await GetAllPosts(username)
@@ -47,6 +48,8 @@ function App() {
       console.error("Error fetching user: " + error)
     }
   }
+
+
 
 
   useEffect(() => {

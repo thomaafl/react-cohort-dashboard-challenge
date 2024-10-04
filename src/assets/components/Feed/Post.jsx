@@ -1,17 +1,59 @@
-import ProfileLogo from "../SharedIcons/ProfileLogo";
+/* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import "../Feed/Post.css"
 import Comment from "./Comment";
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../../App";
+import { CreateNewComment, GetAllComments } from "../../APIs/CommentsAPI";
 export default function Post( { post }) {
 
     const { users, loggedInUser } = useContext(AppContext)
+    const [comments, setComments] = useState([])
+    const [newComment, setNewComment] = useState({
+        postId: post.id,
+        content: "",
+        contactId: loggedInUser.id
+    })
+
 
     const user = users.find(u => u.id === post.contactId)
     if (user === undefined){ //janky, wanna fix this ...
         return
     }
+
+    const fetchComments = async () =>{
+        try {
+            const result = await GetAllComments("thomaafl", post.id)
+            setComments(result)
+        } catch (error) {
+            console.error("Error fetching comments: " + error)
+        }
+    }
+
+    const handleChange1 = (event) => {
+        setNewComment(event.target.value)
+    }
+
+    const handleSubmitComment = async () => {
+        console.log(newComment)
+        try {
+            const result = await CreateNewComment("thomaafl", post.id, newComment)
+            setComments([...comments, result])
+        } catch (error) {
+            console.error("Error while adding a comment: " + error)
+        }
+    }
+
+
+
+    useEffect (() => {
+        fetchComments()
+    }, [] )
     
+    if(!comments) {
+        return <p>Loading comments</p>
+    }
     return (
         <>
             <div className="post">
@@ -33,7 +75,9 @@ export default function Post( { post }) {
                 <div className="post-comment-section">
 
                     
-                    <Comment />
+                    {comments.map((comment, index) => (
+                        <Comment key = {index} comment={comment} />
+                    ))}
                     
                     <div className="your-comment">
                         <div className="your-comment-profile-logo">
@@ -43,10 +87,13 @@ export default function Post( { post }) {
                         <input
                             type = "text"
                             placeholder="Write a comment..."
-                            className="comment-input">    
+                            className="comment-input"    
+                            value = {newComment.content}
+                            onChange={handleChange1}
+                            >
                         </input>
 
-                        <button className="comment-button">Comment</button>
+                        <button className="comment-button" onClick={handleSubmitComment}>Comment</button>
                     </div>
 
 

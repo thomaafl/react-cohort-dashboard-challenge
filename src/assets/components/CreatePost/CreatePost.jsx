@@ -33,10 +33,9 @@ export default function CreatePost () {
             }
             const result = await CreateNewPost("thomaafl", newPost)
             if (result) {
-                setNewPostContent(" ")
+               
                 setPosts([...posts, newPost])
-                console.log(newPost)
-                
+               
                 
             }
         } catch (error) {

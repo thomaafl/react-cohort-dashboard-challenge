@@ -12,7 +12,10 @@ export default function Profile() {
             <h2 className="title">Profile</h2>
             <div className="profile-card">
             <div className="profile-header">
-                <ProfileLogo/>
+                <div className="profile-logo-header1">
+                    <p className="inital-logo-header1">{loggedInUser.firstName.charAt(0)}{loggedInUser.lastName.charAt(0)}</p>
+                    
+                </div>
                 <h3 className="profile-name">Name</h3>
             </div>
             <div className="profile-info1">

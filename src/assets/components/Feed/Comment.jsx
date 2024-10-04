@@ -4,13 +4,12 @@ import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../../App";
 
 
-export default function Comment() {
+export default function Comment( {comment} ) {
     const { users } = useContext(AppContext)
     
-    const user = users.find(u => u.id === 1)
-    if (user === undefined){ //janky, wanna fix this ...
-        return
-    }
+    const user = users.find(u => u.id === comment.contactId)
+    
+    
     return(
         <>
             <div className="comment">
@@ -20,7 +19,7 @@ export default function Comment() {
                 </div>
                 <div className="comment-content">
                     <span className="comment-username">{user.firstName} {user.lastName}</span>
-                    <div className="comment-text">hei fin post!!</div>
+                    <div className="comment-text">{comment.content}</div>
                 </div>
 
             </div>

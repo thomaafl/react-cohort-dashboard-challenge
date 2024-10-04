@@ -119,3 +119,21 @@ input {
     border-radius: 5px;
 
 }
+
+.profile-logo-header1 {
+    position: relative;
+    width: 20%;
+    height: 60px;
+    z-index: 1000;
+    border-radius: 100px;
+    background-color: #64dc78;
+    height: 4rem;
+    text-align: center;
+    width: 4rem;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.inital-logo-header1 {
+    margin-top: 18px;
+}
