@@ -10,19 +10,20 @@ import Home from './assets/components/Feed/Home'
 import Profile from './assets/components/Profile/Profile'
 import { Routes, Route } from 'react-router-dom'
 import { GetAllPosts } from './assets/APIs/PostAPI'
-import { GetAllUsers } from './assets/APIs/UserAPI'
+import { GetAllUsers, GetUserById } from './assets/APIs/UserAPI'
 
 export const AppContext = createContext()
 
 function App() {
   const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
-  
+  const [loggedInUser, setLoggedInUser] = useState("")
+  const username = "thomaafl"
   const fetchPosts = async () => {
     try {
-      const result = await GetAllPosts("thomaafl")
+      const result = await GetAllPosts(username)
       setPosts(result)
-      console.log(result)
+      //console.log(result)
     } catch (error) {
       console.error("Error fetching posts: " + error)
     }
@@ -30,7 +31,7 @@ function App() {
 
   const fetchUsers = async () => {
     try {
-      const result = await GetAllUsers("thomaafl")
+      const result = await GetAllUsers(username)
       setUsers(result)
       //console.log(result)
     } catch (error) {
@@ -38,14 +39,24 @@ function App() {
     }
   }
 
+  const fetchLoggedInUser = async () => {
+    try {
+      const result = await GetUserById(username, 1)
+      setLoggedInUser(result)
+    } catch (error) {
+      console.error("Error fetching user: " + error)
+    }
+  }
+
 
   useEffect(() => {
     fetchPosts()
     fetchUsers()
-  }, [])
+    fetchLoggedInUser()
+  }, [loggedInUser])
 
   return (
-    <AppContext.Provider value = {{posts, setPosts, users, setUsers}}>
+    <AppContext.Provider value = {{posts, setPosts, users, setUsers, loggedInUser, setLoggedInUser}}>
       <div className="root-container">
         <Header />
         <div className="row-container">
@@ -56,6 +67,7 @@ function App() {
             <Routes>
               <Route path ="/" element = {<Home />}/>
               <Route path ="/profile" element = {<Profile />}/>
+              
             </Routes>
 
 

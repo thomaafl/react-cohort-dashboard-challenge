@@ -9,26 +9,10 @@ export default function Post( { post }) {
     const { users } = useContext(AppContext)
 
     const user = users.find(u => u.id === post.contactId)
-    console.log(user)
-    //const author = users.filter(())
-    /*
-    const [author, setAuthor] = useState(null)
-
-    const fetchAuthor = async () => {
-        try {
-            const result = await GetUserById("thomaafl", post.contactId)
-            setAuthor(result)
-            console.log(result)
-        } catch (error) {
-            console.error("Error fetching author" + error)
-        }
+    if (user === undefined){ //janky, wanna fix this ...
+        return
     }
-    useEffect(() => {
-        fetchAuthor()
-    }, [])
-
-    //{author.firstName} {author.lastName}
-    */
+    
     return (
         <>
             <div className="post">

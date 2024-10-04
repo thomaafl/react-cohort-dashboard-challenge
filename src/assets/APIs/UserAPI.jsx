@@ -1,31 +1,7 @@
 
 
-export async function GetUserById(username, id) {
-    try {
-        
-        const user = await fetch(`https://boolean-uk-api-server.fly.dev/${username}/contact/${id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        })
-
-        if (!user.ok) {
-            throw new Error("Error in getAllContacts response: " + user.status)
-        }
-
-        const jsonData = await user.json()
-        return jsonData
-
-    } catch (error) {
-        console.error("Error while fetching contacts", error)
-    }
-}
 
 
-
-
-//did not end up using this function, legacy code <333
 
 export async function GetAllUsers(username){
     try {
@@ -49,4 +25,29 @@ export async function GetAllUsers(username){
     }
 
     
+}
+
+
+
+
+export async function GetUserById(username, id) {
+    try {
+        
+        const user = await fetch(`https://boolean-uk-api-server.fly.dev/${username}/contact/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+
+        if (!user.ok) {
+            throw new Error("Error in getAllContacts response: " + user.status)
+        }
+
+        const jsonData = await user.json()
+        return jsonData
+
+    } catch (error) {
+        console.error("Error while fetching contacts", error)
+    }
 }
