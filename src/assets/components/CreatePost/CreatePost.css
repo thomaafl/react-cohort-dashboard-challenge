@@ -14,9 +14,20 @@
 }
 
 .profile-logo-create-post {
-    position: relative;
+    border-radius: 100px;
+    background-color: #64dc78;
+    height: 3rem;
+    text-align: center;
+    width: 3rem;
+    font-weight: bold;
+    margin-left: 3px;
     margin-right: 10px;
 }
+
+.initials2 {
+    margin-top: 11px;
+}
+
 
 .post-input {
     position: relative;

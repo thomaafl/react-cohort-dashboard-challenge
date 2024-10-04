@@ -41,7 +41,7 @@ export async function GetUserById(username, id) {
         })
 
         if (!user.ok) {
-            throw new Error("Error in getAllContacts response: " + user.status)
+            throw new Error("Error in getUserById response: " + user.status)
         }
 
         const jsonData = await user.json()

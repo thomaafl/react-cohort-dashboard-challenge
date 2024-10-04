@@ -22,7 +22,7 @@ function App() {
   const fetchPosts = async () => {
     try {
       const result = await GetAllPosts(username)
-      setPosts(result)
+      setPosts(result.reverse())
       //console.log(result)
     } catch (error) {
       console.error("Error fetching posts: " + error)
@@ -55,6 +55,11 @@ function App() {
     fetchLoggedInUser()
   }, [loggedInUser])
 
+
+  if(!loggedInUser) {
+    return <p>Loading ....</p>
+  
+  }
   return (
     <AppContext.Provider value = {{posts, setPosts, users, setUsers, loggedInUser, setLoggedInUser}}>
       <div className="root-container">

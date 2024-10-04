@@ -2,11 +2,10 @@ import ProfileLogo from "../SharedIcons/ProfileLogo";
 import "../Feed/Post.css"
 import Comment from "./Comment";
 import { useContext, useState, useEffect } from "react";
-import { GetUserById } from "../../APIs/UserAPI";
 import { AppContext } from "../../../App";
 export default function Post( { post }) {
 
-    const { users } = useContext(AppContext)
+    const { users, loggedInUser } = useContext(AppContext)
 
     const user = users.find(u => u.id === post.contactId)
     if (user === undefined){ //janky, wanna fix this ...
@@ -17,8 +16,8 @@ export default function Post( { post }) {
         <>
             <div className="post">
                 <div className="post-header">
-                    <div className="post-profile-logo">
-                        <ProfileLogo />
+                    <div className="post-profile-logo" style={{backgroundColor: user.favouriteColour}}>
+                        <p className="initial-post" >{user.firstName.charAt(0)}{user.lastName.charAt(0)}</p>
                     </div>
                     <div className="post-top-info">
                         <span className="post-username">{user.firstName} {user.lastName}</span>
@@ -37,8 +36,9 @@ export default function Post( { post }) {
                     <Comment />
                     
                     <div className="your-comment">
-                        <div className="comment-profile-logo">
-                            <ProfileLogo />
+                        <div className="your-comment-profile-logo">
+                            <p className="initial-your-comment" >{loggedInUser.firstName.charAt(0)}{loggedInUser.lastName.charAt(0)}</p>
+                            
                         </div>
                         <input
                             type = "text"

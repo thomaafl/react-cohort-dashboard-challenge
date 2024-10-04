@@ -6,11 +6,9 @@ import { useParams } from "react-router-dom";
 import { CreateNewPost } from "../../APIs/PostAPI";
 export default function CreatePost () {
 
-    //const { id } = useParams()
-    const id = 1
+
     const { posts, setPosts, users, loggedInUser } = useContext(AppContext)
     const [newPostContent, setNewPostContent] = useState("")
-    
     
 
 
@@ -30,6 +28,9 @@ export default function CreatePost () {
         }
 
         try {
+            if (title === "" || title == " "){
+                return
+            }
             const result = await CreateNewPost("thomaafl", newPost)
             if (result) {
                 setNewPostContent(" ")
@@ -43,11 +44,13 @@ export default function CreatePost () {
         }
     }
 
+   
+
     return(
         <>
             <div className="create-post">
                 <div className="profile-logo-create-post">
-                    <ProfileLogo />
+                <p className="initials2">{loggedInUser.firstName.charAt(0)}{loggedInUser.lastName.charAt(0)}</p>
                 </div>
                 <textarea 
                     className="post-input" 
