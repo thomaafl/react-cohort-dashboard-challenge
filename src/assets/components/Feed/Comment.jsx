@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ProfileLogo from "../SharedIcons/ProfileLogo";
 import "../Feed/Comment.css"
 import { useContext, useState, useEffect } from "react";
@@ -8,7 +9,7 @@ export default function Comment( {comment} ) {
     const { users } = useContext(AppContext)
     
     const user = users.find(u => u.id === comment.contactId)
-    
+
     
     return(
         <>

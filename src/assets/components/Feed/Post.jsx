@@ -32,12 +32,13 @@ export default function Post( { post }) {
     }
 
     const handleChange1 = (event) => {
-        setNewComment(event.target.value)
+        setNewComment({...newComment, content: event.target.value})
     }
 
     const handleSubmitComment = async () => {
-        console.log(newComment)
+        
         try {
+            console.log(newComment)
             const result = await CreateNewComment("thomaafl", post.id, newComment)
             setComments([...comments, result])
         } catch (error) {
@@ -86,6 +87,7 @@ export default function Post( { post }) {
                         </div>
                         <input
                             type = "text"
+                            name="content"
                             placeholder="Write a comment..."
                             className="comment-input"    
                             value = {newComment.content}
