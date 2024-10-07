@@ -50,7 +50,7 @@ export default function Post( { post }) {
 
     useEffect (() => {
         fetchComments()
-    }, [] )
+    }, [comments] )
     
     if(!comments) {
         return <p>Loading comments</p>
