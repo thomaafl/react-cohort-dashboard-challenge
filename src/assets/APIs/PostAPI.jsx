@@ -11,7 +11,7 @@ export async function GetAllPosts( username ){
         })
 
         if (!response.ok) {
-            throw new Error("Error in getAllContacts response: " + response.status)
+            throw new Error("Error in getAllPosts response: " + response.status)
         } 
 
         const jsonData = await response.json()
@@ -36,3 +36,4 @@ export async function CreateNewPost(username, newPost)  {
         console.error("Error while creating post", error)
     }
 }
+
