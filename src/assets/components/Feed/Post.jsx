@@ -18,7 +18,7 @@ export default function Post( { post }) {
 
 
     const user = users.find(u => u.id === post.contactId)
-    if (user === undefined){ //janky, wanna fix this ...
+    if (user === undefined){ 
         return
     }
 
