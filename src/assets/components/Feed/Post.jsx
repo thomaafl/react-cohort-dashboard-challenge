@@ -6,6 +6,8 @@ import Comment from "./Comment";
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../../App";
 import { CreateNewComment, GetAllComments } from "../../APIs/CommentsAPI";
+import { Link } from "react-router-dom";
+
 export default function Post( { post }) {
 
     const { users, loggedInUser } = useContext(AppContext)
@@ -64,7 +66,7 @@ export default function Post( { post }) {
                     </div>
                     <div className="post-top-info">
                         <span className="post-username">{user.firstName} {user.lastName}</span>
-                        <span className="post-title">{post.title}</span>
+                        <Link to = {`/post/${post.id}`} className="post-title">{post.title}</Link>
                     </div>
                 </div>
 

@@ -37,3 +37,25 @@ export async function CreateNewPost(username, newPost)  {
     }
 }
 
+export async function GetPostById(username, postId) {
+    try {
+        const response = await fetch(`https://boolean-uk-api-server.fly.dev/${username}/post/${postId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        
+        if (!response.ok) {
+            throw new Error("Error in Get post by id response: " + response.status);
+        }
+
+        const jsonData = await response.json();
+        
+        return jsonData;
+
+    } catch (error) {
+        throw new Error("Error while getting a Post by id!" + error);
+    }
+}

@@ -11,6 +11,7 @@ import Profile from './assets/components/Profile/Profile'
 import { Routes, Route } from 'react-router-dom'
 import { GetAllPosts } from './assets/APIs/PostAPI'
 import { GetAllUsers, GetUserById } from './assets/APIs/UserAPI'
+import SpecificPost from './assets/components/Feed/SpecificPost'
 
 export const AppContext = createContext()
 
@@ -75,6 +76,7 @@ function App() {
             <Routes>
               <Route path ="/" element = {<Home />}/>
               <Route path ="/profile" element = {<Profile />}/>
+              <Route path="/post/:id" element={<SpecificPost />} />
               
             </Routes>
 
