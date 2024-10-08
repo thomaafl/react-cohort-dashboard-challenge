@@ -14,6 +14,7 @@ Feed
     Home
     PostList (could have added this into feed)
     Comment 
+    SpecificPost
 Profile
 
 
